@@ -14,15 +14,7 @@
 		components: {
 			ToDoItem,
 		},
-		data() {
-			return {
-				toDoList: [
-					{ id: '001', title: '吃飯', done: true },
-					{ id: '002', title: '洗澡', done: false },
-					{ id: '003', title: '睡覺', done: false },
-				],
-			};
-		},
+		props: ['toDoList'],
 	};
 </script>
 

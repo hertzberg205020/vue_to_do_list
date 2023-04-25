@@ -2,13 +2,29 @@
 	<div class="todo-header">
 		<input
 			type="text"
-			placeholder="請輸任務名稱，按下Enter鍵確定" />
+			placeholder="請輸任務名稱，按下Enter鍵確定"
+			@keydown.enter="add" />
 	</div>
 </template>
 
 <script>
+	import { nanoid } from 'nanoid';
 	export default {
 		name: 'ToDoHeader',
+		props: ['addToDoItem'],
+		methods: {
+			add(evt) {
+				if (evt.target.value.trim().length === 0)
+					return alter('輸入不可為空');
+				const item = {
+					id: nanoid(),
+					title: evt.target.value,
+					done: false,
+				};
+				this.addToDoItem(item);
+				evt.target.value = '';
+			},
+		},
 	};
 </script>
 

@@ -2,8 +2,8 @@
 	<div id="root">
 		<div class="todo-container">
 			<div class="todo-wrap">
-				<ToDoHeader />
-				<ToDoList />
+				<ToDoHeader :addToDoItem="addToDoItem" />
+				<ToDoList :toDoList="toDoList" />
 				<ToDoFooter />
 			</div>
 		</div>
@@ -21,6 +21,20 @@
 			ToDoHeader,
 			ToDoList,
 			ToDoFooter,
+		},
+		data() {
+			return {
+				toDoList: [
+					{ id: '001', title: '吃飯', done: true },
+					{ id: '002', title: '洗澡', done: false },
+					{ id: '003', title: '睡覺', done: false },
+				],
+			};
+		},
+		methods: {
+			addToDoItem(item) {
+				this.toDoList.unshift(item);
+			},
 		},
 	};
 </script>
