@@ -11,17 +11,20 @@
 	import { nanoid } from 'nanoid';
 	export default {
 		name: 'ToDoHeader',
-		props: ['addToDoItem'],
+		// props: ['addToDoItem'],
 		methods: {
 			add(evt) {
-				if (evt.target.value.trim().length === 0)
-					return alter('輸入不可為空');
+				if (evt.target.value.trim().length === 0) {
+					return alert('輸入不可為空');
+				}
+
 				const item = {
 					id: nanoid(),
 					title: evt.target.value,
 					done: false,
 				};
-				this.addToDoItem(item);
+				// this.addToDoItem(item);
+				this.$emit('addToDoItem', item);
 				evt.target.value = '';
 			},
 		},
